@@ -25,10 +25,13 @@ var Home = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Home.prototype.index = function (http) {
-        return http.response.json({ message: 'Server is running' });
-    };
-    Home.prototype.hello = function (http) {
-        return http.response.json({ message: 'Hello from TS-Rest' });
+        var data = {
+            name: 'Thailand Local Address',
+            description: 'Thailand local address API for general use such as form filling, autocomplete, etc.',
+            version: '0.0.1',
+            author: 'R.Phuwanat'
+        };
+        return http.response.json(data);
     };
     return Home;
 }(controller_1.default));

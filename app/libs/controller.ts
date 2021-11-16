@@ -1,1 +1,1 @@
-export default class Controller { [key: string]:any; }
+export default class Controller { [key: string]:CallableFunction; }
