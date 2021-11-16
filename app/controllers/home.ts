@@ -1,5 +1,5 @@
-import Controller from '../libs/controller'
-import {Http} from '../libs/http'
+import Controller from '../libs/controller';
+import {Http} from '../libs/http';
 
 interface ApiData {
 	name: string
@@ -15,7 +15,7 @@ export default class Home extends Controller {
 			description: 'Thailand local address API for general use such as form filling, autocomplete, etc.',
 			version: '0.0.1',
 			author: 'R.Phuwanat'
-		}
-		return http.response.json(data)
+		};
+		return http.response.json(data);
 	}
 }

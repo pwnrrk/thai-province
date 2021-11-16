@@ -1,6 +1,6 @@
-import Controller from '../libs/controller'
-import {Http} from '../libs/http'
-import ProvinceData from '../models/province'
+import Controller from '../libs/controller';
+import {Http} from '../libs/http';
+import ProvinceData from '../models/province';
 
 export default class Province extends Controller {
 	all(http: Http) {
@@ -15,7 +15,7 @@ export default class Province extends Controller {
 				nameTh: 'สมุทรปราการ',
 				nameEn: 'Samut Prakan'
 			}
-		]
-		return http.response.json(provices)
+		];
+		return http.response.json(provices);
 	}
 }

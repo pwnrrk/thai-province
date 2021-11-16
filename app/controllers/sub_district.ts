@@ -1,6 +1,6 @@
-import Controller from '../libs/controller'
-import {Http} from '../libs/http'
-import SubDistrictData from '../models/sub_district'
+import Controller from '../libs/controller';
+import {Http} from '../libs/http';
+import SubDistrictData from '../models/sub_district';
 export default class SubDistrict extends Controller {
 	all(http: Http) {
 		const sub_districts: SubDistrictData[] = [
@@ -11,7 +11,7 @@ export default class SubDistrict extends Controller {
 				districtId: 1,
 				zipCode: '10140'
 			}
-		]
-		return http.response.json(sub_districts)
+		];
+		return http.response.json(sub_districts);
 	}
 }
