@@ -8,7 +8,8 @@
     "build": "tsc",
     "dev": "tsc -w | nodemon ./build/server.js --exec 'npm run lint && node'",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint:fix": "eslint . --ext .ts --fix",
+    "command": "node ./build/command.js"
   },
   "keywords": [],
   "author": "R.Phuwanat",
