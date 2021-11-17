@@ -9,7 +9,7 @@ export default class SubDistrict extends Controller {
 				nameTh: 'ทุ่งครุ',
 				nameEn: 'Thung Kru',
 				districtId: 1,
-				zipCode: '10140'
+				zipCodeId: 1
 			}
 		];
 		return http.response.json(sub_districts);

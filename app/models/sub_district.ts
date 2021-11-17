@@ -3,7 +3,7 @@ interface SubDistrict {
 	nameTh: string
 	nameEn: string
 	districtId: number
-	zipCode: string
+	zipCodeId: number
 }
 
 export default SubDistrict;

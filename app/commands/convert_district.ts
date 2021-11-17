@@ -21,6 +21,6 @@ export default class ConvertDistrict implements Command {
 			nameEn: district.DISTRICT_NAME,
 			provinceId: district.PROVINCE_ID
 		}));
-		console.log(districts);
+		fs.writeFileSync(path.join(path.resolve()) + '/dist/districts_new.json', JSON.stringify(districts));
 	}
 }

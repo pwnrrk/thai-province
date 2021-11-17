@@ -19,8 +19,9 @@ export default class ConvertProvince implements Command {
 				id: province.PROVINCE_ID,
 				nameTh: province.PROVINCE_NAME,
 				nameEn: province.PROVINCE_NAME,
+				geoId: province.GEO_ID
 			}
 		));
-		console.log(provinces);
+		fs.writeFileSync(path.join(path.resolve()) + '/dist/provinces_new.json', JSON.stringify(provinces));
 	}
 }
