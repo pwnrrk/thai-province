@@ -1,5 +1,9 @@
+interface ExcecuteFunction {
+	(args: string[]): void;
+}
+
 interface Command {
-	excecute: CallableFunction;
+	excecute: ExcecuteFunction;
 }
 
 export default Command;
