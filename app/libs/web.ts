@@ -7,6 +7,7 @@ import '../../routes/router';
 import path from 'path';
 import verifiyToken from './jwt';
 import cors from 'cors';
+import morgan from 'morgan';
 
 export default class Web {
 	instance: Express;
@@ -17,6 +18,7 @@ export default class Web {
 		this.instance.use(bodyParser.urlencoded({ extended: false }));
 		this.instance.use(bodyParser.json());
 		this.instance.use(cors());
+		this.instance.use(morgan('combined'));
 		this.instance.use(express.static(path.join(path.resolve(),'public')));
 		this.useRoute(Routes);
 	}
