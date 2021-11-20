@@ -22,28 +22,30 @@ export default class Web {
 		this.instance.use(express.static(path.join(path.resolve(),'public')));
 		this.useRoute(Routes);
 	}
+	handleMethod(route: Route) {
+		const fun = async (request: express.Request, response: express.Response) => {
+			try {
+				const commandClass = (
+					await import(`../controllers/${route.classPath}.js`)
+				).default;
+				const command = new commandClass();
+				command[route.functionName]({ request, response });
+			} catch (error) {
+				return response.status(500).json(error);
+			}
+		};
+		return fun;
+	}
 	useRoute(routes: Route[]) {
 		routes.forEach(route => {
 			if (route.authenticate) {
 				this.instance[route.method as keyof Express](
 					route.routePath,
 					verifiyToken,
-					async (request: express.Request, response: express.Response) => {
-						const commandClass = (
-							await import(`../controllers/${route.classPath}.js`)
-						).default;
-						const command = new commandClass();
-						command[route.functionName]({ request, response });
-					}
+					this.handleMethod(route)
 				);
 			} else {
-				this.instance[route.method as keyof Express](route.routePath, async (request: express.Request, response: express.Response) => {
-					const commandClass = (
-						await import(`../controllers/${route.classPath}.js`)
-					).default;
-					const command = new commandClass();
-					command[route.functionName]({ request, response });
-				});
+				this.instance[route.method as keyof Express](route.routePath, this.handleMethod(route));
 			}
 		});
 	}

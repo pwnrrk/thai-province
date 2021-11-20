@@ -1,5 +1,6 @@
 import Controller from '../libs/controller';
 import {Http} from '../libs/http';
+import {search} from '../utilities/dataQuery';
 
 interface ApiData {
 	name: string
@@ -17,5 +18,11 @@ export default class Home extends Controller {
 			author: 'R.Phuwanat'
 		};
 		return http.response.json(data);
+	}
+	async search(http: Http) {
+		const query = http.request.query.query;
+		if (!query) return http.response.status(404);
+		const provinces = await search(query.toString());
+		return http.response.json(provinces);
 	}
 }

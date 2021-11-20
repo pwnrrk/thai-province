@@ -2,6 +2,7 @@ import { getDocs, where, getFirestore, collection, query } from 'firebase/firest
 import ZipCode from '../models/zip_code';
 import SubDistrict, {SubDistrictDetail} from '../models/sub_district';
 import District, {DistrictDetail} from '../models/district';
+import Province from '../models/province';
 
 export async function filterDistricts(provinceId: number) {
 	const db = getFirestore();
@@ -26,4 +27,13 @@ export async function filterDistricts(provinceId: number) {
 		}
 	));
 	return districts;
+}
+export async function search(queryText: string) {
+	const db = getFirestore();
+	const q = query(
+		collection(db, 'provinces'),
+		where('nameTh', 'array-contains' ,queryText)
+	);
+	const querySnapshot = await getDocs(q);
+	return querySnapshot.docs.map(doc => doc.data() as Province);
 }
