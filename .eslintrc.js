@@ -4,8 +4,9 @@ module.exports = {
 		'es2021': true
 	},
 	'extends': [
-		'eslint:recommended',
-		'plugin:@typescript-eslint/recommended'
+		'plugin:@typescript-eslint/recommended',
+		'plugin:prettier/recommended',
+		'prettier'
 	],
 	'parser': '@typescript-eslint/parser',
 	'parserOptions': {
@@ -16,26 +17,5 @@ module.exports = {
 	'plugins': [
 		'@typescript-eslint'
 	],
-	'rules': {
-		'indent': [
-			'error',
-			'tab'
-		],
-		'linebreak-style': [
-			'error',
-			'unix'
-		],
-		'quotes': [
-			'error',
-			'single'
-		],
-		'semi': [
-			'error',
-			'always'
-		],
-		'@typescript-eslint/no-unused-vars': [
-			'error',
-			'all'
-		]
-	}
+	'rules': {}
 }

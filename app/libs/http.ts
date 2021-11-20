@@ -1,3 +1,6 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 
-export interface Http { request: Request, response: Response }
+export interface Http {
+  request: Request;
+  response: Response;
+}

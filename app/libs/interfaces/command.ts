@@ -1,9 +1,9 @@
 interface ExcecuteFunction {
-	(args: string[]): void;
+  (args: string[]): void;
 }
 
 interface Command {
-	excecute: ExcecuteFunction;
+  excecute: ExcecuteFunction;
 }
 
 export default Command;

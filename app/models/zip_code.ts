@@ -1,6 +1,6 @@
 interface ZipCode {
-	id: number
-	code: string
+  id: number;
+  code: string;
 }
 
 export default ZipCode;

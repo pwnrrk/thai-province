@@ -1,1 +1,3 @@
-export default class Controller { [key: string]:CallableFunction; }
+export default class Controller {
+  [key: string]: CallableFunction;
+}

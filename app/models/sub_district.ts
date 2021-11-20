@@ -1,15 +1,15 @@
-import ZipCode from './zip_code';
+import ZipCode from "./zip_code";
 
 interface SubDistrict {
-	id: number
-	nameTh: string
-	nameEn: string
-	districtId: number
-	zipCodeId: number
+  id: number;
+  nameTh: string;
+  nameEn: string;
+  districtId: number;
+  zipCodeId: number;
 }
 
 export interface SubDistrictDetail extends SubDistrict {
-	zipcode: ZipCode
+  zipcode: ZipCode;
 }
 
 export default SubDistrict;
