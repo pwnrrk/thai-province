@@ -10,15 +10,17 @@ import {
 } from "firebase/firestore";
 import { filterDistricts } from "../utilities/dataQuery";
 import { DistrictDetail } from "../models/district";
+import fs from "fs";
+import path from "path";
 
 export default class Province extends Controller {
-  async all(http: Http) {
-    const query = await getDocs(collection(getFirestore(), "provinces"));
-    const provinces: ProvinceData[] = query.docs.map(
-      (doc) => doc.data() as ProvinceData
-    );
-    return http.response.json(provinces);
-  }
+  // async all(http: Http) {
+  //   const query = await getDocs(collection(getFirestore(), "provinces"));
+  //   const provinces: ProvinceData[] = query.docs.map(
+  //     (doc) => doc.data() as ProvinceData
+  //   );
+  //   return http.response.json(provinces);
+  // }
   async get(http: Http) {
     const id = parseInt(http.request.params.id);
     const q = query(
@@ -32,5 +34,10 @@ export default class Province extends Controller {
       ...province,
       districts,
     });
+  }
+  all(http: Http) {
+    const file = fs.readFileSync(path.join(path.resolve(), "dist/merged.json"));
+    const provinces = JSON.parse(file.toString());
+    return http.response.json(provinces);
   }
 }

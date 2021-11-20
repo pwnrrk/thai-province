@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import Command from "../libs/interfaces/command";
 import fs from "fs";
 import path from "path";
+import { ProvinceDetail } from "../models/province";
 
 export default class FirebaseSetup implements Command {
   db: Firestore;
@@ -48,15 +49,30 @@ export default class FirebaseSetup implements Command {
     });
   }
 
-  async excecute() {
-    await this.setData("provinces", "provinces_new.json", "province");
-    await this.setData("districts", "districts_new.json", "district");
-    await this.setData(
-      "sub_districts",
-      "subDistricts_new.json",
-      "sub_district"
-    );
-    await this.setData("zipcodes", "zipcodes_new.json", "zip_code");
-    await this.setData("geography", "geography_new.json", "geo_graphy");
+  excecute() {
+    // await this.setData("provinces", "provinces_new.json", "province");
+    // await this.setData("districts", "districts_new.json", "district");
+    // await this.setData(
+    //   "sub_districts",
+    //   "subDistricts_new.json",
+    //   "sub_district"
+    // );
+    // await this.setData("zipcodes", "zipcodes_new.json", "zip_code");
+    // await this.setData("geography", "geography_new.json", "geo_graphy");
+    const file = fs.readFileSync(path.join(path.resolve(), "dist/merged.json"));
+    const provinceDetails: ProvinceDetail[] = JSON.parse(file.toString());
+    provinceDetails.forEach(async (province) => {
+      try {
+        await setDoc(
+          doc(this.db, "provinces", province.id.toString()),
+          province,
+          {
+            merge: true,
+          }
+        );
+      } catch (error) {
+        console.trace(error);
+      }
+    });
   }
 }

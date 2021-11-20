@@ -63,10 +63,10 @@ var Home = /** @class */ (function (_super) {
     }
     Home.prototype.index = function (http) {
         var data = {
-            name: 'Thailand Local Address',
-            description: 'Thailand local address API for general use such as form filling, autocomplete, etc.',
-            version: '0.0.1',
-            author: 'R.Phuwanat'
+            name: "Thailand Local Address",
+            description: "Thailand local address API for general use such as form filling, autocomplete, etc.",
+            version: "0.0.1",
+            author: "R.Phuwanat",
         };
         return http.response.json(data);
     };
