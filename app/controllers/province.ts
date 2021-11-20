@@ -8,8 +8,6 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { filterDistricts } from "../utilities/dataQuery";
-import { DistrictDetail } from "../models/district";
 
 export default class Province extends Controller {
   async all(http: Http) {
@@ -26,11 +24,8 @@ export default class Province extends Controller {
       where("id", "==", id)
     );
     const querySnapshot = await getDocs(q);
-    const province: ProvinceData = querySnapshot.docs[0].data() as ProvinceData;
-    const districts: DistrictDetail[] = await filterDistricts(id);
-    return http.response.json({
-      ...province,
-      districts,
-    });
+    const province: ProvinceDetail =
+      querySnapshot.docs[0].data() as ProvinceDetail;
+    return http.response.json(province);
   }
 }
